@@ -1,6 +1,9 @@
 spring:
   datasource:
-    url: jdbc:mysql://139.199.192.218:3306/testDB
+    url: jdbc:mysql://139.199.192.218:3306/Web_Final
     username: root
     password: scutligu2023
     driver-class-name: com.mysql.cj.jdbc.Driver
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
