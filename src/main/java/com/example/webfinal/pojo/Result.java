@@ -14,9 +14,7 @@ public class Result {
 
     //成功
     public static Result success(String msg){return new Result(200,msg,null);}
-    public static Result success(Object data) { return new Result(200,"success",data); }
     public static Result success(String msg,Object data) {return new Result(200,msg,data);}
-
     //失败
     public static Result error(String msg) { return new Result(400,msg,null);}
 }

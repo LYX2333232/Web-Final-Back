@@ -5,6 +5,8 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
+import java.util.List;
+
 @Mapper
 public interface BuyerLoginMapper {
     //判断是否有该用户名
@@ -12,10 +14,10 @@ public interface BuyerLoginMapper {
     public int check(String username);
 
     //注册新用户
-    @Insert("insert into buyers (username,password) values (#{username},#{password})")
-    public int register(Buyer buyer);
+    @Insert("insert into buyers (username,password,nickname) values (#{username},#{password},#{username})")
+    public void register(Buyer buyer);
 
     //登录
-    @Select("select count(*) from buyers where username=#{username} and password=#{password} ")
-    public int login(Buyer buyer);
+    @Select("select id from buyers where username=#{username} and password=#{password} ")
+    public List<Integer> login(Buyer buyer);
 }

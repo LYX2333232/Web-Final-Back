@@ -12,4 +12,5 @@ public class Buyer {
     private Integer age;
     private Integer gender;
     private String password;
+    private String nickname;
 }

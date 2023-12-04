@@ -4,6 +4,9 @@ spring:
     username: root
     password: scutligu2023
     driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      max-lifetime: 1800000
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
+  mapper-locations: classpath:com/example/webfinal/mapper/XML/*.xml

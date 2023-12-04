@@ -17,11 +17,4 @@ class BuyerLoginMapperTest {
     void check() {
         System.out.println(loginMapper.check("lyx"));
     }
-    @Test
-    void register(){
-        Buyer buyer = new Buyer();
-        buyer.setUsername("cky");
-        buyer.setPassword("password");
-        System.out.println(loginMapper.register(buyer));
-    }
 }

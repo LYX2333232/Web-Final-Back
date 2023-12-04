@@ -2,16 +2,14 @@ package com.example.webfinal.controller.login;
 
 import com.example.webfinal.mapper.buyer.BuyerLoginMapper;
 import com.example.webfinal.mapper.seller.SellerLoginMapper;
-import com.example.webfinal.pojo.Buyer;
-import com.example.webfinal.pojo.LoginUser;
-import com.example.webfinal.pojo.Result;
-import com.example.webfinal.pojo.Seller;
+import com.example.webfinal.pojo.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Objects;
 
 @Slf4j
@@ -56,8 +54,11 @@ public class LoginController {
             Buyer buyer = new Buyer();
             buyer.setPassword(user.getPassword());
             buyer.setUsername(user.getUsername());
-            if (buyerLogin.login(buyer) > 0) {
-                return Result.success("登录成功");
+            List<Integer> res = buyerLogin.login(buyer);
+            if (!res.isEmpty()) {
+                GetId data = new GetId();
+                data.setId(res.get(0));
+                return Result.success("登录成功",data);
             }
             else return Result.error("登陆失败");
         }
@@ -66,8 +67,11 @@ public class LoginController {
             Seller seller = new Seller();
             seller.setUsername(user.getUsername());
             seller.setPassword(user.getPassword());
-            if (sellerLogin.login(seller)>0){
-                return Result.success("登录成功");
+            List<Integer> res = sellerLogin.login(seller);
+            if (!res.isEmpty()){
+                GetId data = new GetId();
+                data.setId(res.get(0));
+                return Result.success("登录成功",data);
             }
             else return Result.error("登录失败");
         }
