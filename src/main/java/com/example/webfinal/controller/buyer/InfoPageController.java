@@ -22,7 +22,8 @@ public class InfoPageController {
     }
 
     @PostMapping("/updateInfo")
-    public Result updateInfo(@RequestBody Buyer buyer){
+    public Result updateInfo(@RequestParam Integer id,@RequestParam String nickname,@RequestParam Integer gender,@RequestParam Integer age){
+        Buyer buyer = new Buyer(id,null,age,gender,null,nickname);
         if (mapper.updateInfo(buyer) > 0){
             return Result.success("修改成功");
         }
