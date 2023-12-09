@@ -19,5 +19,5 @@ public interface SellerLoginMapper {
 
     //登录
     @Select("select id from sellers where username=#{username} and password=#{password} ")
-    List<Integer> login(Seller seller);
+    Integer login(Seller seller);
 }

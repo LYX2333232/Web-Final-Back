@@ -3,9 +3,11 @@ package com.example.webfinal.controller.buyer;
 import com.example.webfinal.mapper.buyer.BuyerInfoPageMapper;
 import com.example.webfinal.pojo.Buyer;
 import com.example.webfinal.pojo.Result;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+@Slf4j
 @RestController
 public class InfoPageController {
     @Autowired
@@ -22,8 +24,8 @@ public class InfoPageController {
     }
 
     @PostMapping("/updateInfo")
-    public Result updateInfo(@RequestParam Integer id,@RequestParam String nickname,@RequestParam Integer gender,@RequestParam Integer age){
-        Buyer buyer = new Buyer(id,null,age,gender,null,nickname);
+    public Result updateInfo(@RequestBody Buyer buyer){
+        log.info(String.valueOf(buyer));
         if (mapper.updateInfo(buyer) > 0){
             return Result.success("修改成功");
         }

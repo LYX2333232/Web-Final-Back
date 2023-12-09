@@ -1,15 +1,20 @@
 package com.example.webfinal.pojo;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-
-import java.util.List;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class Order {
     private Integer id;
     private Integer buyerId;
-    private String goods;
+    private Integer goodId;
     private String name;
     private String phone;
-    private String address;
+    private String email;
+    private String time;
 }

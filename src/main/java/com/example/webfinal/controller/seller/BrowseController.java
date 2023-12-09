@@ -32,11 +32,11 @@ public class BrowseController {
         }
         if (!Objects.equals(startTime,"")){
             LocalDateTime time = LocalDateTime.parse(startTime);
-            data = data.stream().filter(item->item.getTime().isAfter(time)).toList();
+            data = data.stream().filter(item->LocalDateTime.parse(item.getTime()).isAfter(time)).toList();
         }
         if (!Objects.equals(endTime,"")){
             LocalDateTime time = LocalDateTime.parse(endTime);
-            data = data.stream().filter(item->item.getTime().isBefore(time)).toList();
+            data = data.stream().filter(item->LocalDateTime.parse(item.getTime()).isBefore(time)).toList();
         }
         return Result.success("获取数据成功",data);
     }

@@ -17,5 +17,5 @@ public class Record {
     private String buyerName;
     private Integer goodId;
     private String goodName;
-    private LocalDateTime time;
+    private String time;
 }

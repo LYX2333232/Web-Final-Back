@@ -2,15 +2,16 @@ package com.example.webfinal.controller.login;
 
 import com.example.webfinal.mapper.buyer.BuyerLoginMapper;
 import com.example.webfinal.mapper.seller.SellerLoginMapper;
-import com.example.webfinal.pojo.*;
+import com.example.webfinal.pojo.Buyer;
+import com.example.webfinal.pojo.LoginUser;
+import com.example.webfinal.pojo.Result;
+import com.example.webfinal.pojo.Seller;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
 import java.util.Objects;
 
 @Slf4j
@@ -59,11 +60,10 @@ public class LoginController {
 
             buyer.setPassword(user.getPassword());
             buyer.setUsername(user.getUsername());
-            List<Integer> res = buyerLogin.login(buyer);
-            if (!res.isEmpty()) {
-                GetId data = new GetId();
-                data.setId(res.get(0));
-                return Result.success("登录成功",data);
+            Integer res = buyerLogin.login(buyer);
+            if (res != null) {
+                buyer.setId(res);
+                return Result.success("登录成功",buyer);
             }
             else return Result.error("登陆失败");
         }
@@ -72,11 +72,10 @@ public class LoginController {
             Seller seller = new Seller();
             seller.setUsername(user.getUsername());
             seller.setPassword(user.getPassword());
-            List<Integer> res = sellerLogin.login(seller);
-            if (!res.isEmpty()){
-                GetId data = new GetId();
-                data.setId(res.get(0));
-                return Result.success("登录成功",data);
+            Integer res = sellerLogin.login(seller);
+            if (res != null){
+                seller.setId(res);
+                return Result.success("登录成功",seller);
             }
             else return Result.error("登录失败");
         }

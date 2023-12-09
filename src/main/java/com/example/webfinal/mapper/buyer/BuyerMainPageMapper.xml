@@ -7,4 +7,11 @@
             #{id}
         </foreach>
     </select>
+
+    <update id="updateGoodInfo">
+        update Web_Final.goods
+        set sold = sold+1,
+        order_ids =IF(order_ids is null or order_ids = '',#{orderId},CONCAT(order_ids,',',#{orderId}))
+        where id = #{id}
+    </update>
 </mapper>
