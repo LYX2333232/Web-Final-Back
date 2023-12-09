@@ -46,7 +46,7 @@ public class MainPageController {
     public Result buy(@RequestParam Integer goodId,@RequestParam Integer buyerId){
 
         LocalDateTime time = LocalDateTime.now();
-        Record record = new Record(null,goodId,buyerId,time);
+        Record record = new Record(null,goodId,null,buyerId,null,time);
         if (mapper.buy(record)>0){
             return Result.success("购买成功");
         }
@@ -55,7 +55,7 @@ public class MainPageController {
 
     @PostMapping("/addToCart")
     public Result addToCart(@RequestParam Integer goodId,@RequestParam Integer buyerId){
-        Record record = new Record(null,goodId,buyerId,null);
+        Record record = new Record(null,goodId,null,buyerId,null,null);
         if(mapper.addToCart(record)>0){
             return Result.success("添加成功");
         }
@@ -64,7 +64,7 @@ public class MainPageController {
 
     @PostMapping("/postBrowse")
     public Result postBrowse(@RequestParam Integer goodId,@RequestParam Integer buyerId){
-        Record record = new Record(null,goodId,buyerId,LocalDateTime.now());
+        Record record = new Record(null,goodId,null,buyerId,null,LocalDateTime.now());
         if (mapper.browse(record)>0){
             return Result.success("记录成功");
         }

@@ -11,6 +11,7 @@ import lombok.ToString;
 @AllArgsConstructor
 public class Good {
     private Integer id;
+    private Integer sellerId;
     private String name;
     private Float price;
     private String image;

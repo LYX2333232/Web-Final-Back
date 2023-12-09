@@ -14,6 +14,8 @@ import java.time.LocalDateTime;
 public class Record {
     private Integer id;
     private Integer buyerId;
+    private String buyerName;
     private Integer goodId;
+    private String goodName;
     private LocalDateTime time;
 }

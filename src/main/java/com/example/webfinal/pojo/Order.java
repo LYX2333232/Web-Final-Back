@@ -8,7 +8,7 @@ import java.util.List;
 public class Order {
     private Integer id;
     private Integer buyerId;
-    private List<Integer> goods;
+    private String goods;
     private String name;
     private String phone;
     private String address;
