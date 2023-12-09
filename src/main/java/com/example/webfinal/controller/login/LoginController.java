@@ -51,10 +51,12 @@ public class LoginController {
 //        return Result.success("成功");
     }
     @PostMapping("/login")
-    public Result login(@ModelAttribute LoginUser user){
+    public Result login(@RequestBody LoginUser user){
+        log.info(String.valueOf(user));
         //买家登录
         if (Objects.equals(user.getOccupation(),"buyer")) {
             Buyer buyer = new Buyer();
+
             buyer.setPassword(user.getPassword());
             buyer.setUsername(user.getUsername());
             List<Integer> res = buyerLogin.login(buyer);
