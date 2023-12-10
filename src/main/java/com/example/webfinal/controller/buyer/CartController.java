@@ -26,10 +26,13 @@ public class CartController {
         }
         else return Result.error("删除失败");
     }
-
+    public static class changeNumberItem{
+        public Integer id;
+        public Integer number;
+    }
     @PostMapping("/changeNumber")
-    public Result changeNumber(@RequestParam Integer id,@RequestParam Integer number){
-        if (mapper.changeNumber(id, number)>0){
+    public Result changeNumber(@RequestBody changeNumberItem item){
+        if (mapper.changeNumber(item.id, item.number)>0){
             return Result.success("修改成功");
         }
         else return Result.error("修改失败");

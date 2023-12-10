@@ -17,4 +17,5 @@ public class Order {
     private String phone;
     private String email;
     private String time;
+    private Integer number;
 }
